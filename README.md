@@ -45,7 +45,7 @@ sends a list of all interactions made to the specific link
 
 ![getInteractions](images/post.png)
 
-optional parameters which defines a range 
+optional parameters which defines a range, 
 add the start and end timestamp in the body of the POST request
 
 ![body](images/body.png)
