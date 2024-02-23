@@ -24,9 +24,9 @@ git clone https://github.com/aditya-bijapurkar/akto-internship-assignment.git
 I have used postman to do all the API calling
 
 ### 1) api/getUrl
-sends the url of
+sends the url of the client we are connected to in interact-client
 
-![Alt text](image link)
+![getUrl](images/get.png)
 
 
 ### 2) api/getInteractions
@@ -39,9 +39,9 @@ before sending this API request make some interactions to the interactsh-client 
 
 sends a list of all interactions made to the specific link
 
-![Alt text](image link)
+![getInteractions](images/post.png)
 
 optional parameters which defines a range 
 add the start and end timestamp in the body of the POST request
 
-![Alt text](image link)
+![body](images/body.png)
