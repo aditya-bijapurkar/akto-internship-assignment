@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 });
 
 const child = spawn(process.env.INTERACTSH);
-child.on("error", (e) => {
+child.on("error", (error) => {
   console.log(`error: ${error.message}`);
 });
 child.on("close", (code) => {
