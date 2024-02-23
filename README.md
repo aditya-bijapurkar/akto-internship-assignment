@@ -17,7 +17,11 @@ go install -v github.com/projectdiscovery/interactsh/cmd/interactsh-client@lates
 ```
 git clone https://github.com/aditya-bijapurkar/akto-internship-assignment.git
 ```
-
+4) open terminal in the project directory and run the following commands:
+```
+    npm install
+    node app.js
+```
 
 ## Demo
 
