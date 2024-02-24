@@ -4,23 +4,21 @@ This application is developed in Node.js which has 2 API endpoints to interact w
 
 ## Installation
 
-### 1) On docker:
+### a) On docker:
 
-Use the following command:
+1. Use the following command to pull the image:
 
 ```
 docker pull adityabijapurkar/interactsh-wrapper:v1
 ```
 
-Run the docker image using:
+2. Run a docker container using:
 
 ```
 docker run -p 8000:8000 adityabijapurkar/interactsh-wrapper:v1
 ```
 
-###
-
-### 2) On local maching: using git repository
+### b) On local maching: using git repository
 
 Before using the service you need to have go and interactsh-client installed
 
