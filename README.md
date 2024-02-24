@@ -51,7 +51,7 @@ I have used postman to do all the API calling
 expected output->
 ```
 {"valid-endpoints": [
-   { "GET": "/api/getURL"},
+   {"GET": "/api/getURL"},
    {"POST": "/api/getInteractions"}
 ]}
 ```
