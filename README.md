@@ -18,7 +18,7 @@ docker pull adityabijapurkar/interactsh-wrapper:v1
 docker run -p 8000:8000 adityabijapurkar/interactsh-wrapper:v1
 ```
 
-### b) On local maching: using git repository
+### b) On local machine: using git repository
 
 Before using the service you need to have go and interactsh-client installed
 
