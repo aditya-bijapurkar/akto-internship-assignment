@@ -1,8 +1,11 @@
 const { spawn } = require("child_process");
 const express = require("express");
 const bodyParser = require("body-parser");
-const { error } = require("console");
 require("dotenv").config();
+
+const { filterArray } = require("./functions/filter");
+const { addInteractions } = require("./functions/interactions");
+const { getUrl } = require("./functions/getUrl");
 
 const app = express();
 app.use(bodyParser.json());
@@ -27,11 +30,7 @@ child.on("close", (code) => {
 let url = "";
 child.stderr.on("data", (data) => {
   const res = data.toString();
-  if (res.includes("oast")) {
-    let u = res.split(" ");
-    url = u[u.length - 1];
-    url = url.slice(0, -1);
-  }
+  url = getUrl(res);
 });
 app.get("/api/getURL", (req, res) => {
   res.json({ url });
@@ -40,35 +39,9 @@ app.get("/api/getURL", (req, res) => {
 const interactions = [];
 child.stdout.on("data", (data) => {
   let res = data.toString();
-  console.log(res);
-  const log = res.split("\n");
-
-  const interact = {};
-  log.forEach((line) => {
-    const match = line.match(
-      /\[.*\] Received (.*) from .* at (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})/
-    );
-    if (match) {
-      const event = match[0];
-      const time = match[2];
-      interact[time] = event;
-      interactions.push(interact);
-    }
-  });
+  const interact = addInteractions(res);
+  for (let i = 0; i < interact.length; i++) interactions.push(interact[i]);
 });
-
-const filterArray = (interactions, ...time) => {
-  if (time[0].start && time[0].end) {
-    const res = [];
-    for (let i = 0; i < interactions.length; i++) {
-      const timestamp = Object.keys(interactions[i])[0];
-      if (timestamp >= time[0].start && timestamp <= time[0].end)
-        res.push(interactions[i]);
-    }
-    return res;
-  }
-  return interactions;
-};
 
 app.post("/api/getInteractions", (req, res) => {
   const result = filterArray(interactions, req.body);

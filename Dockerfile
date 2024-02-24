@@ -1,4 +1,4 @@
-FROM golang:1.22.0-bullseye as builder
+FROM golang:1.22.0-bullseye as stage1
 
 WORKDIR /app
 
@@ -12,7 +12,7 @@ FROM node:20.8.0
 
 WORKDIR /app
 
-COPY --from=builder /app/bin/interactsh-client /app/bin/interactsh-client
+COPY --from=stage1 /app/bin/interactsh-client /app/bin/interactsh-client
 
 COPY . .
 
@@ -22,6 +22,5 @@ ENV INTERACTSH=/app/bin/interactsh-client
 ENV PORT=8000
 
 EXPOSE 8000
-
 
 CMD ["node", "app.js"]
