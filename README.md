@@ -47,6 +47,15 @@ git clone https://github.com/aditya-bijapurkar/akto-internship-assignment.git
 
 I have used postman to do all the API calling
 
+### to get valid endpoints do a get request on "/"
+expected output->
+```
+{"valid-endpoints": [
+   { "GET": "/api/getURL"},
+   {"POST": "/api/getInteractions"}
+]}
+```
+
 ### 1) api/getUrl
 
 sends the url of the client we are connected to in interact-client
